@@ -1,3 +1,4 @@
+# Chapter 1 The MU-Puzzle
 import re
 
 def r1(s):
@@ -22,6 +23,11 @@ def r4(s):
 
 fns = [r1, r2, r3, r4]
 
+# Example:
+# search('MI', MIIU')
+#
+# This way madness lies:
+# search('MI', 'MU')
 def search(axiom, goal):
   i = 0
   collection = {axiom: []} 
