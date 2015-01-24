@@ -12,8 +12,7 @@ def make_axiom(n):
   return x + 'p' + '-q' + x + '-'
 
 def next_theorem(theorem):
-  assert 'p' in theorem
-  assert 'q' in theorem
+  assert is_theorem(theorem)
   iq = theorem.find('q')
   return theorem[:iq] + '-' + theorem[iq:] + '-'
 
