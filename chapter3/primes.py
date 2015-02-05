@@ -51,8 +51,7 @@ theorems_generators = [
 ]
 
 def find_all_new_theorems(theorems, fn):
-  # Apply fn to each element of theorems then filter out non-theorems
-  # and add them to the set of theorems.
+  # Apply fn to each element of theorems then filter out non-theorems.
   mapper = functools.partial(fn, theorems)
   return filter(None, map(mapper, theorems))
 
@@ -83,6 +82,7 @@ def generate_theorems(n):
   for i in xrange(n):
     print i, len(theorems)
     for fn in theorems_generators:
+      # Add the new theorems to the set of all theorems.
       theorems.update(find_all_new_theorems(theorems, fn))
 
   print n, len(theorems)
