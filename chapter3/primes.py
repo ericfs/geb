@@ -53,10 +53,10 @@ theorems_generators = [
 def find_all_new_theorems(theorems, fn):
   # Apply fn to each element of theorems then filter out non-theorems.
   mapper = functools.partial(fn, theorems)
-  return filter(None, map(mapper, theorems))
+  return set(t for t in (mapper(s) for s in theorems) if t and not t in theorems)
 
 def p_theorems(theorems):
-  return sorted(filter(lambda s: p_pattern.match(s), theorems))
+  return sorted(s for s in theorems if p_pattern.match(s))
 
 def print_p_theorems(theorems):
   print p_theorems(theorems)
